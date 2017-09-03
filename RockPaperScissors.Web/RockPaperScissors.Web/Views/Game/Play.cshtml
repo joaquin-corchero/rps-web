@@ -39,16 +39,16 @@ else
                     {
                         <div class="row">
                             <div class="col-sm-4">
-                                <label for="moveType.Rock">@MoveTypes.Rock.ToString()</label>
-                                <input id="moveType.Rock" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Rock" checked="@(MoveTypes.Rock == currentMove.MoveTypes[i])"/>
+                                <label for="@string.Format("moveTypes[{0}]-1", i)">@MoveTypes.Rock.ToString()</label>
+                                <input id="@string.Format("moveTypes[{0}]-1", i)" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Rock" checked="@(MoveTypes.Rock == currentMove.MoveTypes[i])"/>
                             </div>
                             <div class="col-sm-4">
-                                <label for="moveType.Paper">@MoveTypes.Paper.ToString()</label>
-                                <input id="moveType.Paper" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Paper" checked="@(MoveTypes.Paper == currentMove.MoveTypes[i])"/>
+                                <label for="@string.Format("moveTypes[{0}]-2", i)">@MoveTypes.Paper.ToString()</label>
+                                <input id="@string.Format("moveTypes[{0}]-2", i)" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Paper" checked="@(MoveTypes.Paper == currentMove.MoveTypes[i])"/>
                             </div>
                             <div class="col-sm-4">
-                                <label for="moveType.Scissors">@MoveTypes.Scissors.ToString()</label>
-                                <input id="moveType.Scissors" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Scissors" checked="@(MoveTypes.Scissors == currentMove.MoveTypes[i])"/>
+                                <label for="@string.Format("moveTypes[{0}]-3", i)">@MoveTypes.Scissors.ToString()</label>
+                                <input id="@string.Format("moveTypes[{0}]-3", i)" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Scissors" checked="@(MoveTypes.Scissors == currentMove.MoveTypes[i])"/>
                             </div>
                         </div>
                     }
