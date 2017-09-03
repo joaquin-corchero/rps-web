@@ -1,0 +1,46 @@
+﻿@using RockPaperScissors.Web.Domain;
+@model RockPaperScissors.Web.Models.Game
+
+@{
+    ViewBag.Title = "Choose player types";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @for (var i = 0; i < Model.NumberOfPlayers; i++)
+        {
+            <h4><label>Player @(i + 1)</label></h4>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="@string.Format("playerTypes[{0}]-0", i)">@PlayerTypes.Human.ToString()</label>
+                    <input id="@string.Format("playerTypes[{0}]-0", i)" type="radio" name="@string.Format("playerTypes[{0}]", i)" value="@PlayerTypes.Human" />
+                </div>
+                <div class="col-sm-4">
+                    <label for="@string.Format("playerTypes[{0}]-1", i)">@PlayerTypes.Random.ToString()</label>
+                    <input id="@string.Format("playerTypes[{0}]-1", i)" type="radio" name="@string.Format("playerTypes[{0}]", i)" value="@PlayerTypes.Random" />
+                </div>
+                <div class="col-sm-4">
+                    <label for="@string.Format("playerTypes[{0}]-2", i)">@PlayerTypes.Tactical.ToString()</label>
+                    <input id="@string.Format("playerTypes[{0}]-2", i)" type="radio" name="@string.Format("playerTypes[{0}]", i)" value="@PlayerTypes.Tactical" />
+                </div>
+            </div>
+            <hr />
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Start playing" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

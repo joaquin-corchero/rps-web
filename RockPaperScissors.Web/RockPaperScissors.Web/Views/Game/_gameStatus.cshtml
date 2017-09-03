@@ -1,0 +1,29 @@
+﻿@model RockPaperScissors.Web.Models.Game
+
+<p>Hand <strong>@Model.Tries.Count</strong> out of <strong>@Model.NumberOfTries</strong></p>
+@if (Model.Tries.Any(t => t.WinnerIndex.HasValue))
+{
+    <section>
+        <header>Tries:</header>
+        @foreach (var turn in Model.Tries.Where(t => t.WinnerIndex.HasValue))
+        {
+            if (turn.WinnerIndex == -1)
+            {
+                <strong>Draw</strong>
+            }
+            else
+            {
+                <strong>Player @(turn.WinnerIndex + 1) Won!</strong>
+            }
+            <div class="row">
+                @foreach (var move in turn.MoveTypes)
+                {
+                    <div class="col-sm-6">
+                        @move
+                    </div>
+                }
+
+            </div>
+        }
+    </section>
+}

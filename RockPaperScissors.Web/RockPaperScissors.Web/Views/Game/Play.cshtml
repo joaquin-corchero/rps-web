@@ -1,0 +1,67 @@
+﻿@using RockPaperScissors.Web.Models
+@model RockPaperScissors.Web.Models.Game
+
+@{
+    ViewBag.Title = "Let's Play!!!";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr />
+@if (@Model.Tries.Count == 0)
+{
+    <p>Click The button bellow to start playing!</p>
+}
+else
+{
+    @Html.Partial("_gameStatus", Model)
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @{
+                var currentMove = Model.Tries.LastOrDefault();
+                for (var i = 0; i < currentMove.MoveTypes.Count; i++)
+                {
+                    var isAutoPlayer = Model.Players[i].GetType() != typeof(HumanPlayer);
+                    <h4>Player @(i + 1) @(isAutoPlayer ? ": move is hidden as is auto player" : "")</h4>
+                    if (isAutoPlayer)
+                    {
+                        <input type="hidden" name="@string.Format("moveTypes[{0}]", i)" value="@currentMove.MoveTypes[i]" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="moveType.Rock">@MoveTypes.Rock.ToString()</label>
+                                <input id="moveType.Rock" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Rock" checked="@(MoveTypes.Rock == currentMove.MoveTypes[i])"/>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="moveType.Paper">@MoveTypes.Paper.ToString()</label>
+                                <input id="moveType.Paper" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Paper" checked="@(MoveTypes.Paper == currentMove.MoveTypes[i])"/>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="moveType.Scissors">@MoveTypes.Scissors.ToString()</label>
+                                <input id="moveType.Scissors" type="radio" name="@string.Format("moveTypes[{0}]", i)" value="@MoveTypes.Scissors" checked="@(MoveTypes.Scissors == currentMove.MoveTypes[i])"/>
+                            </div>
+                        </div>
+                    }
+                    <hr />
+                }
+            }
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Continue" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+                }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
