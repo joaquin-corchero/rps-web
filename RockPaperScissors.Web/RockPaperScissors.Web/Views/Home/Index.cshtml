@@ -1,31 +1,33 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using RockPaperScissors.Web.Controllers;
+@{
+    ViewBag.Title = "Welcome";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Rock, Paper, Scissors</h1>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <h2>Start playing</h2>
+        <p>@Html.ActionLink("Click here", nameof(GameController.Index), "Game", null, new { @class = "btn btn-primary" })</p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Game Rules</h2>
+        <p>A match takes place between 2 players and is made up of 3 games, with the overall winner being the first player to win 2 games (i.e. best of 3).</p>
+        <p>Each game consists of both players selecting one of Rock, Paper or Scissors; the game winner is determined based on the following rules:</p>
+        <ul>
+            <li>Rock beats scissors</li>
+            <li>Scissors beats paper</li>
+            <li>Paper beats rock</li>
+        </ul>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Types of player</h2>
+        <ul>
+            <li><strong>Human Player</strong>: must be prompted for a selection of Rock, Paper or Scissors for each turn</li>
+            <li><strong>Random Computer Player</strong>: should automatically select one of Rock, Paper or Scissors at random for each turn.</li>
+            <li><strong>Tactical Computer Player</strong>: should always select the choice that would have beaten its last choice, e.g. if it played Scissors in game 2, it should play Rock in game 3.</li>
+        </ul>
     </div>
 </div>
