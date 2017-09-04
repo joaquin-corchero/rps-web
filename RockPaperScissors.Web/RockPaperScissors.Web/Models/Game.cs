@@ -6,6 +6,7 @@ namespace RockPaperScissors.Web.Models
     {
         public const int DefaultNumberOfTries = 3;
         public const int DefaultNumberOfPlayers = 2;
+        public const int DrawPlayerIndex = -1;
 
         public List<IPlayer> Players { get; private set; }
         public List<Move> Tries { get; set; }

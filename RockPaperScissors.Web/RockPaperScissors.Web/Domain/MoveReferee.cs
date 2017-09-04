@@ -12,7 +12,7 @@ namespace RockPaperScissors.Web.Domain
         public int GetWinnerIndex(List<MoveTypes> moveTypes)
         {
             if (moveTypes[0] == moveTypes[1])
-                return -1;
+                return Game.DrawPlayerIndex;
 
             if (PaperVsRock(moveTypes) || RockVsScissors(moveTypes) || ScissorsVsPaper(moveTypes))
                 return 0;

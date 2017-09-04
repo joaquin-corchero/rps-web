@@ -232,7 +232,7 @@ namespace RockPaperScissors.Web.Tests.Domain
         [Test]
         public void If_there_is_a_draw_the_game_is_finished()
         {
-            _winner = -1;
+            _winner = Game.DrawPlayerIndex;
             _gameReferee.Setup(r => r.GetWinner(_game)).Returns(_winner);
 
             Execute();

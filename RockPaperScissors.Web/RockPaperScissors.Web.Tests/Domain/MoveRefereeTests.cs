@@ -30,7 +30,7 @@ namespace RockPaperScissors.Web.Tests.Domain
             _player2 = MoveTypes.Paper;
             Execute();
 
-            _winnerIndex.Should().Equal(-1);
+            _winnerIndex.Should().Equal(Game.DrawPlayerIndex);
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace RockPaperScissors.Web.Tests.Domain
             _player2 = MoveTypes.Rock;
             Execute();
 
-            _winnerIndex.Should().Equal(-1);
+            _winnerIndex.Should().Equal(Game.DrawPlayerIndex);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace RockPaperScissors.Web.Tests.Domain
             _player2 = MoveTypes.Scissors;
             Execute();
 
-            _winnerIndex.Should().Equal(-1);
+            _winnerIndex.Should().Equal(Game.DrawPlayerIndex);
         }
 
         [Test]

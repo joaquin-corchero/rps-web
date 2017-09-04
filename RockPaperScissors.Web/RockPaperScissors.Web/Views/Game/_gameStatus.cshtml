@@ -7,7 +7,7 @@
         <header>Tries:</header>
         @foreach (var turn in Model.Tries.Where(t => t.WinnerIndex.HasValue))
         {
-            if (turn.WinnerIndex == -1)
+            if (turn.WinnerIndex == Game.DrawPlayerIndex)
             {
                 <strong>Draw</strong>
             }

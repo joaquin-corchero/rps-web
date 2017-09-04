@@ -82,7 +82,7 @@ namespace RockPaperScissors.Web.Tests.Domain
             _game.Tries.Add(Move.Generate(_win_moves));
             _game.Tries[1].SetWinner(expected);
             _game.Tries.Add(Move.Generate(_draw_moves));
-            _game.Tries[2].SetWinner(-1);
+            _game.Tries[2].SetWinner(Game.DrawPlayerIndex);
 
             Execute();
 
@@ -96,9 +96,9 @@ namespace RockPaperScissors.Web.Tests.Domain
             _game.Tries.Add(Move.Generate(_win_moves));
             _game.Tries[0].SetWinner(expected);
             _game.Tries.Add(Move.Generate(_draw_moves));
-            _game.Tries[1].SetWinner(-1);
+            _game.Tries[1].SetWinner(Game.DrawPlayerIndex);
             _game.Tries.Add(Move.Generate(_draw_moves));
-            _game.Tries[2].SetWinner(-1);
+            _game.Tries[2].SetWinner(Game.DrawPlayerIndex);
 
             Execute();
 
@@ -122,7 +122,7 @@ namespace RockPaperScissors.Web.Tests.Domain
         [Test]
         public void Null_is_returned_for_3_draws()
         {
-            var expected = -1;
+            var expected = Game.DrawPlayerIndex;
             _game.Tries.Add(Move.Generate(_draw_moves));
             _game.Tries[0].SetWinner(expected);
             _game.Tries.Add(Move.Generate(_draw_moves));
@@ -139,7 +139,7 @@ namespace RockPaperScissors.Web.Tests.Domain
         public void Draw_is_returned_after_draw_win_lose()
         {
             _game.Tries.Add(Move.Generate(_draw_moves));
-            _game.Tries[0].SetWinner(-1);
+            _game.Tries[0].SetWinner(Game.DrawPlayerIndex1);
             _game.Tries.Add(Move.Generate(_win_moves));
             _game.Tries[0].SetWinner(0);
             _game.Tries.Add(Move.Generate(_losing_moves));
@@ -147,7 +147,7 @@ namespace RockPaperScissors.Web.Tests.Domain
 
             Execute();
 
-            _result.Should().Equal(-1);
+            _result.Should().Equal(Game.DrawPlayerIndex);
         }
     }
 }
