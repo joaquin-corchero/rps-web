@@ -1,4 +1,5 @@
-﻿@model RockPaperScissors.Web.Models.Game
+﻿@using RockPaperScissors.Web.Models
+@model RockPaperScissors.Web.Models.Game
 
 <p>Hand <strong>@Model.Tries.Count</strong> out of <strong>@Model.NumberOfTries</strong></p>
 @if (Model.Tries.Any(t => t.WinnerIndex.HasValue))

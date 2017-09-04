@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using RockPaperScissors.Web.Models;
+using System.Collections.Generic;
 
 namespace RockPaperScissors.Web.Domain
 {

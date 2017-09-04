@@ -139,7 +139,7 @@ namespace RockPaperScissors.Web.Tests.Domain
         public void Draw_is_returned_after_draw_win_lose()
         {
             _game.Tries.Add(Move.Generate(_draw_moves));
-            _game.Tries[0].SetWinner(Game.DrawPlayerIndex1);
+            _game.Tries[0].SetWinner(Game.DrawPlayerIndex);
             _game.Tries.Add(Move.Generate(_win_moves));
             _game.Tries[0].SetWinner(0);
             _game.Tries.Add(Move.Generate(_losing_moves));

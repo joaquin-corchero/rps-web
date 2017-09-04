@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RockPaperScissors.Web.Domain;
+using RockPaperScissors.Web.Models;
 using Should.Fluent;
 using System.Collections.Generic;
 
